@@ -17,6 +17,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const renderSchedule = (talksToRender) => {
     scheduleContainer.innerHTML = '';
+
+    if (talksToRender.length === 0) {
+      scheduleContainer.innerHTML = '<p class="no-results">No talks found for your search.</p>';
+      return;
+    }
+
     let currentTime = new Date();
     currentTime.setHours(10, 0, 0, 0);
 
