@@ -57,7 +57,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const filterTalks = (e) => {
     const searchTerm = e.target.value.toLowerCase();
     const filteredTalks = talks.filter(talk => {
-      return talk.category.some(cat => cat.toLowerCase().includes(searchTerm));
+      const inCategory = talk.category.some(cat => cat.toLowerCase().includes(searchTerm));
+      const inSpeakers = talk.speakers.some(speaker => speaker.toLowerCase().includes(searchTerm));
+      return inCategory || inSpeakers;
     });
     renderSchedule(filteredTalks);
   };
